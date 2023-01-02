@@ -18,7 +18,7 @@ RSpec.describe "Movie Show Page", type: :feature do
       @actor_5 = Actor.create({name: "Kurt Russel", age: 71,})
       @actor_6 = Actor.create({name: "Christian Bale", age: 48,})
       @move_actor_1 = MovieActor.create({movie_id: @movie_1.id, actor_id: @actor_1.id})
-      @move_actor_2 = MovieActor.create({movie_id: @movie_1.id, actor_id: @actor_3.id})
+      @move_actor_2 = MovieActor.create({movie_id: @movie_2.id, actor_id: @actor_3.id})
       @move_actor_3 = MovieActor.create({movie_id: @movie_2.id, actor_id: @actor_2.id})
       @move_actor_4 = MovieActor.create({movie_id: @movie_2.id, actor_id: @actor_4.id})
     end
@@ -32,7 +32,19 @@ RSpec.describe "Movie Show Page", type: :feature do
       expect(page).to_not have_content("#{@movie_2.title}")
     end
 
-    it 'see a list of actors from youngest to olders'
+    describe "movie actor list order" do
+      let (:actor1) {"#{@actor_4.name}"}
+      let (:actor2) {"#{@actor_2.name}"}
+      let (:actor3) {"#{@actor_3.name}"}
+
+      it 'see a list of actors from youngest to olders' do
+        visit "/movies/#{@movie_2.id}"
+
+        expect(actor2).to appear_before(actor1)
+        expect(actor3).to_not appear_before(actor2)
+        expect(actor3).to_not appear_before(actor1)
+      end
+    end
 
     it 'see average age of all actors'
   end
