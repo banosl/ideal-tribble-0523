@@ -63,7 +63,7 @@ RSpec.describe "Movie Show Page", type: :feature do
 
     it 'see a form to add an actor to the movie' do
       visit "/movies/#{@movie_2.id}"
-
+save_and_open_page
       expect(page).to have_field("Actor ID")
     end
 
