@@ -24,7 +24,7 @@ RSpec.describe "Studio Index" do
     it 'under each studio see all of its movies including movie title, creation year, genre' do
       visit '/studios'
 
-      within ("studio-#{@studio_1.id}") do
+      within ("#studio-#{@studio_1.id}") do
         expect(page).to have_content("#{@movie_1.title}")
         expect(page).to have_content("Year: #{@movie_1.creation_year}")
         expect(page).to have_content("Genre: #{@movie_1.genre}")
@@ -32,7 +32,7 @@ RSpec.describe "Studio Index" do
         expect(page).to_not have_content("#{@movie_4.title}")
       end
 save_and_open_page
-      within ("studio-#{@studio_2.id}") do
+      within ("#studio-#{@studio_2.id}") do
         expect(page).to have_content("#{@movie_4.title}")
         expect(page).to have_content("Year: #{@movie_4.creation_year}")
         expect(page).to have_content("Genre: #{@movie_4.genre}")
