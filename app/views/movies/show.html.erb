@@ -4,5 +4,6 @@ Year: <%= @movie.creation_year %><br/>
 Genre: <%= @movie.genre %><br/>
 Actors:
 <% @movie.actors_alpha.each do |actor| %>
-  <li><%= actor.name %></li>
-<% end %>
+  <li><%= actor.name %>, age: <%= actor.age %></li>
+<% end %><br/>
+Average age of actors: <%= @movie.actors_avg_age %>
