@@ -1,6 +1,16 @@
 <h1>Movie Studios</h1>
 
 <% @studios.each do |studio| %>
-  <h2><%= studio.name %></h2>
-  Location: <%= studio.location %>
+<%= binding.pry %>
+  <section id="studio-<%= studio.id %>">
+    <h2><%= studio.name %></h2>
+    Location: <%= studio.location %>
+
+    <h3>Films:</h3>
+      <% studio.movies.each do |movie| %>
+        <%= movie.title %>
+        Year: <%= movie.creation_year %>
+        Genre: <%= movie.genre %>
+      <% end %>
+  </section>
 <% end %>
