@@ -14,7 +14,7 @@ RSpec.describe "Studio Index" do
     end
     it "see all of the studios including name and location" do
       visit '/studios'
-
+ save_and_open_page
       expect(page).to have_content("#{@studio_1.name}")
       expect(page).to have_content("#{@studio_2.name}")
       expect(page).to have_content("Location: #{@studio_1.location}")
