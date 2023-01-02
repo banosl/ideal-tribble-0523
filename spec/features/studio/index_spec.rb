@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Studio Index" do
+RSpec.describe "Studio Index", type: :feature do
   describe "visiting studio index page" do
     before :each do
       @studio_1 = Studio.create({name: "Paramount Pictures", location: "Hollywood, California, USA"})
@@ -31,7 +31,7 @@ RSpec.describe "Studio Index" do
         expect(page).to have_content("#{@movie_2.title}")
         expect(page).to_not have_content("#{@movie_4.title}")
       end
-save_and_open_page
+
       within ("#studio-#{@studio_2.id}") do
         expect(page).to have_content("#{@movie_4.title}")
         expect(page).to have_content("Year: #{@movie_4.creation_year}")
